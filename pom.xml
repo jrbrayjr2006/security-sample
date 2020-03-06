@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+      
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.2.5.RELEASE</version>
+    <relativePath/> <!-- lookup parent from repository -->
+  </parent>
+      
+  <groupId>com.jrbrayjr.spring.security.oauth2</groupId>
+  <artifactId>parent-project</artifactId>
+  <version>1.0-SNAPSHOT</version>
+      
+  <modules>
+    <module>security-service</module>
+    <module>security-client-reactjs</module>
+  </modules>
+      
+  <packaging>pom</packaging>
+      
+  <properties>
+    <java.version>11</java.version>
+  </properties>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>com.github.eirslett</groupId>
+          <artifactId>frontend-maven-plugin</artifactId>
+          <version>1.9.1</version>
+          <configuration>
+            <nodeVersion>v11.10.1</nodeVersion>
+            <npmVersion>6.11.3</npmVersion>
+            <workingDirectory>security-client-ui</workingDirectory>
+          </configuration>
+          <executions>
+            <execution>
+              <id>install node and npm</id>
+              <goals>
+                <goal>install-node-and-npm</goal>
+              </goals>
+            </execution>
+            <execution>
+              <id>npm install</id>
+              <goals>
+                <goal>npm</goal>
+              </goals>
+            </execution>
+            <execution>
+              <id>npm start</id>
+              <goals>
+                <goal>npm</goal>
+              </goals>
+              <configuration>
+                <arguments>start</arguments>
+              </configuration>
+            </execution>
+            <execution>
+              <id>npm run build</id>
+              <goals>
+                <goal>npm</goal>
+              </goals>
+              <configuration>
+                <arguments>run build</arguments>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+</project>
