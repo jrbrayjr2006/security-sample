@@ -16,7 +16,6 @@ public class SampleSecurityConfig extends WebSecurityConfigurerAdapter {
     protected final String ADMIN_ROLE = "ADMIN";
 
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-        super.configure(httpSecurity);
         httpSecurity
                 .cors().disable()
                 .csrf().disable()
