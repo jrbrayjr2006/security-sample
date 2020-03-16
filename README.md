@@ -10,6 +10,21 @@ This is a simple login and authentication scenario.
 
 ## Backend Service
 The backend application service is built on Spring Boot.
+Secure RESTful services will include authentication, authorization, and encryption components..
+
+- Only authenticated entities can access the service
+- Only authorized entities can invoke specific operations of the service.
+- Sensitive data is neither stored nor transmitted in the clear.  All sensitive data is encrypted in data storage and while being transmitted.
+
+### Details
+
+#### Configuration
+The configuration class `ServiceSecurityCoinfiguration` is setup to allow anonymous access to the following endpoints:
+
+- `/login`
+- `/actuator`
+
+The `/store` endpoint is secured and cannot be accessed by an unauthenticated user.
 
 ## Frontend UI
 The frontend application UI is a built on ReactJS.
