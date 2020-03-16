@@ -26,6 +26,34 @@ The configuration class `ServiceSecurityCoinfiguration` is setup to allow anonym
 
 The `/store` endpoint is secured and cannot be accessed by an unauthenticated user.
 
+### Configuration
+
+The primary security configuration is in a custom `SampleSecurityConfig` class.
+
+```java
+...
+@Configuration
+@EnableWebSecurity
+public class SampleSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    protected final String ADMIN_ROLE = "ADMIN";
+
+    protected void configure(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity
+                .cors().disable()
+                .csrf().disable()
+                .authorizeRequests()
+                .antMatchers("/admin/**").hasRole(ADMIN_ROLE)
+                .antMatchers("/login*").permitAll()
+                .anyRequest().authenticated();
+    }
+
+    protected void configure(final AuthenticationManagerBuilder auth) throws Exception {
+        ...
+    }
+...
+```
+
 ## Frontend UI
 The frontend application UI is a built on ReactJS.
 In the project directory, you can run:
@@ -140,3 +168,4 @@ Or just run:  `npm install --save-dev jest enzyme enzyme-adapter-react-16 chai`
 - [React](https://reactjs.org/)
 - [Multi-Module Project with Maven](https://www.baeldung.com/maven-multi-module)
 - [oAuth 2.0 Getting Started](https://oauth.net/getting-started/)
+- [Frontend React Maven Plugin](https://github.com/eirslett/frontend-maven-plugin)
